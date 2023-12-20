@@ -5393,8 +5393,24 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3,
 		num: -2,
 	},
+	mountaineer: {
+		onDamage(damage, target, source, effect) {
+			if (effect && effect.id === 'stealthrock') {
+				return false;
+			}
+		},
+		onTryHit(target, source, move) {
+			if (move.type === 'Rock' && !target.activeTurns) {
+				this.add('-immune', target, '[from] ability: Mountaineer');
+				return null;
+			}
+		},
+		isBreakable: true,
+		name: "Mountaineer",
+		rating: 3,
+		num: -2,
+	},
 	rebound: {
-		isNonstandard: "CAP",
 		name: "Rebound",
 		onTryHitPriority: 1,
 		onTryHit(target, source, move) {
@@ -5427,10 +5443,919 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: -3,
 	},
 	persistent: {
-		isNonstandard: "CAP",
 		name: "Persistent",
 		// implemented in the corresponding move
 		rating: 3,
 		num: -4,
 	},
+	daunt: {
+			onStart(pokemon) {
+					let activated = false;
+					for (const target of pokemon.adjacentFoes()) {
+							if (!activated) {
+									this.add('-ability', pokemon, 'Daunt', 'boost');
+									activated = true;
+							}
+							if (target.volatiles['substitute']) {
+									this.add('-immune', target);
+							} else {
+									this.boost({spa: -1}, target, pokemon, null, true);
+							}
+					}
+			},
+			name: "Daunt",
+			rating: 3.5,
+			num: 10000,
+	},
+conflagrant: {
+			// upokecenter says this is implemented as an added secondary effect
+			onModifyMove(move) {
+					if (!move || !move.flags['contact'] || move.target === 'self') return;
+					if (!move.secondaries) {
+							move.secondaries = [];
+					}
+					move.secondaries.push({
+							chance: 30,
+							status: 'brn',
+			ability: this.dex.abilities.get('conflagrant'),
+					});
+			},
+			name: "Conflagrant",
+			rating: 2,
+			num: 10001,
+	},
+dynamo: {
+			// upokecenter says this is implemented as an added secondary effect
+			onModifyMove(move) {
+					if (!move || !move.flags['contact'] || move.target === 'self') return;
+					if (!move.secondaries) {
+							move.secondaries = [];
+					}
+					move.secondaries.push({
+							chance: 30,
+							status: 'par',
+							ability: this.dex.abilities.get('dynamo'),
+					});
+			},
+			name: "Dynamo",
+			rating: 3,
+			num: 10002,
+	},
+undead: {
+	onTryHit(target, source, move) {
+		if (target !== source && move.type === 'Ghost') {
+			if (!this.heal(target.baseMaxhp / 4)) {
+				this.add('-immune', target, '[from] ability: Undead');
+			}
+			return null;
+		}
+	},
+	isBreakable: true,
+	name: "Undead",
+	rating: 3.5,
+	num: 10003,
+},
+snowpacking: {
+			onModifyAtkPriority: 5,
+			onModifyAtk(atk, pokemon) {
+					if (['snow'].includes(pokemon.effectiveWeather())) {
+							return this.chainModify(1.5);
+					}
+			},
+			onWeather(target, source, effect) {
+					if (target.hasItem('utilityumbrella')) return;
+					if (effect.id === 'hail') {
+							this.damage(target.baseMaxhp / 8, target, target);
+					}
+			},
+			name: "Snow Packing",
+			rating: 2,
+			num: 10005,
+	},
+sunbathe: {
+			onWeather(target, source, effect) {
+					if (target.hasItem('utilityumbrella')) return;
+					if (effect.id === 'sunnyday' || effect.id === 'desolateland') {
+							this.heal(target.baseMaxhp / 16);
+					}
+			},
+			name: "Sunbathe",
+			rating: 1.5,
+			num: 10006,
+	},
+wisepower: {
+			onModifySpAPriority: 5,
+			onModifySpA(spa) {
+					return this.chainModify(2);
+			},
+			name: "Wise Power",
+			rating: 5,
+			num: 10007,
+	},
+steeltoe: {
+			onBasePowerPriority: 23,
+			onBasePower(basePower, attacker, defender, move) {
+					if (move.flags['kick']) {
+							this.debug('Kicker boost');
+							return this.chainModify([4915, 4096]);
+					}
+			},
+			name: "Steel Toe",
+			rating: 3,
+			num: 10008,
+	},
+artillery: {
+			onBasePowerPriority: 23,
+			onBasePower(basePower, attacker, defender, move) {
+					if (move.flags['bullet'] || move.id === 'windblast') {
+							this.debug('Artillery boost');
+							return this.chainModify([4915, 4096]);
+					}
+			},
+			name: "Artillery",
+			rating: 3,
+			num: 10009,
+	},
+parasite: {
+			onTryHealPriority: 1,
+			onTryHeal(damage, target, source, effect) {
+					const heals = ['drain', 'leechseed', 'ingrain', 'aquaring', 'strengthsap'];
+					if (heals.includes(effect.id)) {
+							return this.chainModify([0x14CC, 0x1000]);
+					}
+			},
+			name: "Parasite",
+			rating: 2.5,
+			num: 10011,
+	},
+adept: {
+	onBasePower(damage, source, target, move) {
+		if (target.runEffectiveness(move) > 1) {
+			return this.chainModify([4915, 4096]);
+		}
+	},
+	name: "Adept",
+	rating: 3.5,
+	num: 10012,
+},
+hubris: {
+	onSourceAfterFaint(length, target, source, effect) {
+		if (effect && effect.effectType === 'Move') {
+			this.boost({spa: length}, source);
+		}
+	},
+	name: "Hubris",
+	rating: 3,
+	num: 10013,
+},
+strongwinds: {
+	onBasePowerPriority: 23,
+	onBasePower(basePower, attacker, defender, move) {
+		if (move.flags['wind']) {
+			this.debug('Strong Winds boost');
+			return this.chainModify(1.2);
+		}
+	},
+	name: "Strong Winds",
+	rating: 3,
+	num: 10014,
+},
+supernova: {
+	onModifyAtkPriority: 5,
+	onModifyAtk(atk, attacker, defender, move) {
+		if (move.type === 'Cosmic' && attacker.hp <= attacker.maxhp / 3) {
+			this.debug('Supernova boost');
+			return this.chainModify(1.5);
+		}
+	},
+	onModifySpAPriority: 5,
+	onModifySpA(atk, attacker, defender, move) {
+		if (move.type === 'Cosmic' && attacker.hp <= attacker.maxhp / 3) {
+			this.debug('Supernova boost');
+			return this.chainModify(1.5);
+		}
+	},
+	name: "Supernova",
+	rating: 2,
+	num: 10015,
+},
+fortitude: {
+	onAfterMoveSecondary(target, source, move) {
+		if (!source || source === target || !target.hp || !move.totalDamage) return;
+		const lastAttackedBy = target.getLastAttackedBy();
+		if (!lastAttackedBy) return;
+		const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
+		if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
+			this.boost({def: 1, spd: 1});
+		}
+	},
+	name: "Fortitude",
+	rating: 2,
+	num: 10016,
+},
+	mythicarcher: {
+	onModifyMovePriority: 22,
+	onModifyMove(move) {
+		if (move.category === "Physical" && !move.flags['contact']) {
+			move.category = "Special";
+		}
+	},
+	onBasePowerPriority: 23,
+	onBasePower(basePower, attacker, defender, move) {
+		if (move.category === "Physical" && !move.flags['contact']) {
+			this.debug('Magical Archer boost');
+			return this.chainModify([4506, 4096]);
+		}
+	},
+	name: "Mythic Archer",
+	rating: 3,
+	num: 10017,
+},
+predator: {
+	onBasePowerPriority: 24,
+	onBasePower(basePower, attacker, defender, move) {
+		if (attacker.gender && defender.gender) {
+			if (attacker.weighthg > defender.weighthg) {
+				this.debug('Predator boost');
+				return this.chainModify(1.25);
+			}
+		}
+	},
+	name: "Predator",
+	rating: 0,
+	num: 10018,
+},
+hideandseek: {
+			onStart(pokemon) {
+					this.actions.useMove("substitute", pokemon);
+			},
+			name: "Hide and Seek",
+			rating: 2,
+			num: 10019,
+	},
+orchestral: {
+	onBasePowerPriority: 7,
+	onBasePower(basePower, attacker, defender, move) {
+		if (move.flags['sound']) {
+			this.debug('Orchestral boost');
+			return this.chainModify([0x14CD, 0x1000]);
+		}
+	},
+	onSourceModifyDamage(damage, source, target, move) {
+		if (move.flags['sound']) {
+			this.debug('Orchestral weaken');
+			return this.chainModify(0.5);
+		}
+	},
+	name: "Orchestral",
+	rating: 3.5,
+	num: 10020,
+},
+radioactive: {
+	onModifyAtkPriority: 5,
+	onModifyAtk(atk, attacker, defender, move) {
+		if (move.type === 'Poison' || move.type === 'Cosmic') {
+			this.debug('Radioactive boost');
+			return this.chainModify(1.2);
+		}
+	},
+	onModifySpAPriority: 5,
+	onModifySpA(atk, attacker, defender, move) {
+		if (move.type === 'Poison' || move.type === 'Cosmic') {
+			this.debug('Radioactive boost');
+			return this.chainModify(1.2);
+		}
+	},
+	name: "Radioactive",
+	rating: 3.5,
+	num: 10021,
+},
+solidfooting: {
+	//coded directly in moves.ts
+	name: "Solid Footing",
+	rating: 2.5,
+	num: 10022,
+},
+fishmemory: {
+	onResidualOrder: 26,
+	onResidualSubOrder: 1,
+	onResidual(target) {
+		target.clearBoosts();
+		this.add('-clearboost', target);
+	},
+	name: "Fish Memory",
+	rating: 5,
+	num: 10023,
+},
+herbivore: {
+	onTryHit(target, source, move) {
+		if (target !== source && move.type === 'Grass') {
+			if (!this.heal(target.baseMaxhp / 4)) {
+				this.add('-immune', target, '[from] ability: Herbivore');
+			}
+			return null;
+		}
+	},
+	name: "Herbivore",
+	rating: 3.5,
+	num: 10024,
+},
+blizzardgift: {
+	onStart(pokemon) {
+		delete this.effectState.forme;
+	},
+	onUpdate(pokemon) {
+		if (!pokemon.isActive || pokemon.baseSpecies.baseSpecies !== 'Yetitan' || pokemon.transformed) return;
+		if (['hail'].includes(pokemon.effectiveWeather())) {
+			if (pokemon.species.id !== 'yetitanblizzard') {
+				pokemon.formeChange('Yetitan-Blizzard', this.effect, false, '[msg]');
+			}
+		} else {
+			if (pokemon.species.id === 'yetitanblizzard') {
+				pokemon.formeChange('Yetitan', this.effect, false, '[msg]');
+			}
+		}
+	},
+	onAllyModifyAtkPriority: 3,
+	onAllyModifyAtk(atk, pokemon) {
+		if (this.effectState.target.baseSpecies.baseSpecies !== 'Yetitan') return;
+		if (['hail'].includes(pokemon.effectiveWeather())) {
+			return this.chainModify(1.5);
+		}
+	},
+	onAllyModifySpDPriority: 4,
+	onAllyModifySpD(spd, pokemon) {
+		if (this.effectState.target.baseSpecies.baseSpecies !== 'Yetitan') return;
+		if (['hail'].includes(pokemon.effectiveWeather())) {
+			return this.chainModify(1.5);
+		}
+	},
+	name: "Blizzard Gift",
+	rating: 1,
+	num: 10025,
+},
+phytogenetic: {
+	onModifyAtkPriority: 5,
+	onModifyAtk(atk, attacker, defender, move) {
+		if (move.type === 'Grass') {
+			this.debug('Phytogenetic boost');
+			return this.chainModify(1.5);
+		}
+	},
+	onModifySpAPriority: 5,
+	onModifySpA(atk, attacker, defender, move) {
+		if (move.type === 'Grass') {
+			this.debug('Phytogenetic boost');
+			return this.chainModify(1.5);
+		}
+	},
+	name: "Phytogenetic",
+	rating: 3.5,
+	num: 10026,
+},
+pantheon: {
+	onStart(source) {
+		if (source.side.active.length === 1) {
+			return;
+		}
+		for (const allyActive of source.side.active) {
+			if (
+				allyActive && allyActive.position !== source.position &&
+				!allyActive.fainted && allyActive.hasAbility(['pantheon'])
+			) {
+				let statName = 'atk';
+				let bestStat = 0;
+				let s: StatIDExceptHP;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
+					}
+				}
+				this.boost({[statName]: 1}, source);
+			}
+		}
+	},
+	name: "Pantheon",
+	rating: 0,
+	num: 10027,
+},
+rushdown: {
+	onModifyAtkPriority: 5,
+	onModifyAtk(atk, attacker, defender, move) {
+		if (attacker.activeMoveActions <= 1) {
+			this.debug('Rushdown boost');
+			return this.chainModify(1.5);
+		}
+	},
+	onModifySpAPriority: 5,
+	onModifySpA(atk, attacker, defender, move) {
+		if (attacker.activeMoveActions <= 1) {
+			this.debug('Rushdown boost');
+			return this.chainModify(1.5);
+		}
+	},
+	name: "Rushdown",
+	rating: 2,
+	num: 10028,
+},
+vitalitydrain: {
+	onSourceAfterFaint(length, target, source, effect) {
+		if (effect && effect.effectType === 'Move') {
+			console.log('source: '+source);
+			this.heal(source.baseMaxhp / 4, source);
+		}
+	},
+	name: "Vitality Drain",
+	rating: 3,
+	num: 10029,
+},
+remorse: {
+	name: "Remorse",
+	onDamagingHitOrder: 1,
+	onDamagingHit(damage, target, source, move) {
+		if (!target.hp) {
+			this.add('-ability', target, 'Remorse', 'boost');
+			this.boost({atk: -1}, source, target, null, true);
+			this.boost({spa: -1}, source, target, null, true);
+		}
+	},
+	rating: 2.5,
+	num: 10030,
+},
+channeling: {
+	onFoeDamagingHit(damage, target, source, move) {
+		if (move.type === 'Electric') this.heal(source.baseMaxhp / 6, source);
+	},
+	name: "Channeling",
+	rating: 3,
+	num: 10031,
+},
+ignition: {
+	onTryHit(target, source, move) {
+		if (target !== source && move.type === 'Fire') {
+			if (!this.heal(target.baseMaxhp / 4)) {
+				this.add('-immune', target, '[from] ability: Ignition');
+			}
+			return null;
+		}
+	},
+	name: "Ignition",
+	rating: 3.5,
+	num: 10032,
+},
+chainstriker: {
+	onStart(pokemon) {
+		pokemon.addVolatile('chainstriker');
+	},
+	condition: {
+		onStart(pokemon) {
+			this.effectState.numConsecutive = 0;
+			this.effectState.lastMove = '';
+		},
+		onTryMovePriority: -2,
+		onTryMove(pokemon, target, move) {
+			if (!pokemon.hasAbility('chainstriker')) {
+				pokemon.removeVolatile('chainstriker');
+				return;
+			}
+			if (this.effectState.lastMove === move.id && pokemon.moveLastTurnResult) {
+				this.effectState.numConsecutive++;
+			} else {
+				this.effectState.numConsecutive = 0;
+			}
+			this.effectState.lastMove = move.id;
+		},
+		onModifyDamage(damage, source, target, move) {
+			const dmgMod = [0x1000, 0x1333, 0x1666, 0x1999, 0x1CCC, 0x2000];
+			const numConsecutive = this.effectState.numConsecutive > 5 ? 5 : this.effectState.numConsecutive;
+			return this.chainModify([dmgMod[numConsecutive], 0x1000]);
+		},
+	},
+	name: "Chain Striker",
+	rating: 3.5,
+	num: 10033,
+},
+tightgrip: {
+	//implemented in conditions.ts
+	name: "Tight Grip",
+	rating: 1.5,
+	num: 10034,
+},
+envious: {
+	onStart(pokemon) {
+		for (const target of pokemon.side.foe.active) {
+			if (!target.boosts) return;
+			let isBoosted = false;
+			let i: BoostID;
+			for (i in target.boosts) {
+				if(target.boosts[i] > 0) isBoosted = true;
+			}
+			console.log("isBoosted: "+isBoosted);
+			if (isBoosted) this.boost({atk: 1}, pokemon);
+		}
+	},
+	name: "Envious",
+	rating: 4,
+	num: 10035,
+},
+seer: {
+	onModifyMovePriority: -5,
+	onModifyMove(move) {
+		if (!move.ignoreImmunity) move.ignoreImmunity = {};
+		if (move.ignoreImmunity !== true) {
+			move.ignoreImmunity['Psychic'] = true;
+		}
+	},
+	name: "Seer",
+	rating: 3,
+	num: 10036,
+},
+hydrothermal: {
+	//implemented in conditions.ts
+	name: "Hydrothermal",
+	rating: 1.5,
+	num: 10037,
+},
+camper: {
+			onModifyMove(move, attacker) {
+		console.log("move.flags: "+move.flags);
+					if (move.flags['charge'] && !attacker.volatiles['twoturnmove']) {
+			attacker.cureStatus();
+			this.heal(attacker.baseMaxhp / 7, attacker);
+					}
+			},
+			name: "Camper",
+			rating: 3,
+			num: 10038,
+	},
+razorrotors: {
+	onModifyAtkPriority: 5,
+	onModifyAtk(atk, attacker, defender, move) {
+		if (move.type === 'flying') {
+			this.debug('Razor Rotors boost');
+			return this.chainModify(1.5);
+		}
+	},
+	onModifySpAPriority: 5,
+	onModifySpA(atk, attacker, defender, move) {
+		if (move.type === 'flying') {
+			this.debug('Razor Rotors boost');
+			return this.chainModify(1.5);
+		}
+	},
+	name: "Razor Rotors",
+	rating: 3.5,
+	num: 10039,
+},
+gordianknot: {
+	onDamagingHit(damage, target, source, move) {
+		if (target.hasAbility("Gordian Knot") && this.checkMoveMakesContact(move, source, target)) {
+			source.addVolatile('gordiantrap');
+		}
+	},
+	name: "Gordian Knot",
+	rating: 2,
+	num: 10040,
+},
+jeweler: {
+	onResidualOrder: 26,
+	onResidualSubOrder: 1,
+	onResidual(pokemon) {
+		if (pokemon.hp && !pokemon.item && this.dex.items.get(pokemon.lastItem).isGem) {
+			pokemon.setItem(pokemon.lastItem);
+			pokemon.lastItem = '';
+			this.add('-item', pokemon, pokemon.getItem(), '[from] ability: Jeweler');
+		}
+	},
+	name: "Jeweler",
+	rating: 3.5,
+	num: 10041,
+},
+rooted: {
+	name: "Rooted",
+	onStart(pokemon) {
+			pokemon.addVolatile('ingrain');
+	},
+	rating: 2,
+	num: 10042,
+},
+energetic: {
+	onBasePowerPriority: 30,
+	onBasePower(basePower, attacker, defender, move) {
+		if (move.priority > 0) {
+			return this.chainModify(1.5);
+		}
+	},
+	name: "Energetic",
+	rating: 4,
+	num: 10043,
+},
+clumsy: {
+	onModifyAtkPriority: 5,
+	onModifyAtk(atk, pokemon) {
+		if (pokemon.volatiles['confusion']) {
+			return this.chainModify(1.3);
+		}
+	},
+	name: "Clumsy",
+	rating: 3,
+	num: 10044,
+},
+mistweaver: {
+	onSourceBasePowerPriority: 22,
+	onSourceBasePower(basePower, attacker, defender, move) {
+		if (this.field.isTerrain('mistyterrain')) return;
+			if (move.type === 'Fairy') {
+				this.debug('Weaver Mist boost');
+			return this.chainModify(1.5);
+		}
+	},
+	name: "Mist Weaver",
+	rating: 3.5,
+	num: 10046,
+},
+shorttemper: {
+	onAfterMoveSecondary(target, source, move) {
+		if (!source || source === target || !target.hp || !move.totalDamage) return;
+		const lastAttackedBy = target.getLastAttackedBy();
+		if (!lastAttackedBy) return;
+		const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
+		if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
+			this.boost({atk: 1});
+		}
+	},
+	name: "Short Temper",
+	rating: 2,
+	num: 10047,
+},
+breakneck: {
+	onModifyPriority(priority, pokemon, target, move) {
+		if (move?.basePower <= 60) return priority + 1;
+	},
+	name: "Breakneck",
+	rating: 3,
+	num: 10048,
+},
+cauterize: {
+	onAfterMoveSecondary(target, source, move) {
+		if (!source || source === target || !target.hp || !move.totalDamage) return;
+		const lastAttackedBy = target.getLastAttackedBy();
+		if (!lastAttackedBy) return;
+		const damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
+		if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
+			source.side.addSideCondition('magmabath');//supposed to be a side condition? matters for doubles
+		}
+	},
+	onSourceSwitchOut(source){
+		source.side.removeSideCondition('magmabath'); //clear side condition when pokemon leaves
+	},
+	name: "Cauterize",
+	rating: 2,
+	num: 10049,
+},
+cosmersion: {
+	onTryHit(target, source, move) {
+		if (target !== source && move.type === 'cosmic') {
+			if (!this.heal(target.baseMaxhp / 4)) {
+				this.add('-immune', target, '[from] ability: Cosmersion');
+			}
+			return null;
+		}
+	},
+	isBreakable: true,
+	name: "Cosmersion",
+	rating: 3.5,
+	num: 10050,
+},
+resilience: {
+	onDamagingHit(damage, target, source, effect) {
+		if(effect.category == "Special")
+		this.boost({spd: 1});
+	},
+	name: "Resilience",
+	rating: 3.5,
+	num: 10051,
+},
+honeyboost: {
+	onModifyAtk(atk, pokemon, source) {
+		if (pokemon.hasItem("honey")) {
+			return this.chainModify([4915, 4096]);
+		}
+	},
+	onModifyDef(def, pokemon, source) {
+		if (pokemon.hasItem("honey")) {
+			return this.chainModify([4915, 4096]);
+		}
+	},
+	name: "Honey Boost",
+	rating: 4,
+	num: 10052,
+},
+	spikedskin: {
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				if (this.randomChance(10, 10)) {
+					source.side.addSideCondition('spikes');
+					this.add('-activate', target, 'ability: Spiked Skin');
+					}
+				}
+		},
+		name: "Spiked Skin",
+		rating: 4,
+		num: 10053,
+ },
+ harsh: {
+	 onModifyCritRatio(critRatio, source, target) {
+		 if (target && ['brn'].includes(target.status)) return 5;
+	 },
+	 name: "Harsh",
+	 rating: 1.5,
+	 num: 10054,
+ },
+ amplifier: {
+	 onBasePowerPriority: 7,
+	 onBasePower(basePower, attacker, defender, move) {
+		 if (move.flags['sound']) {
+			 this.debug('Amplifier boost');
+			 return this.chainModify([4915, 4096]);
+		 }
+	 },
+	 name: "Amplifier",
+	 rating: 3,
+	 num: 10055,
+ },
+ vampiric: {
+	 onAfterMoveSecondarySelf(pokemon, target, move) {
+		 if (move.flags['contact']) this.heal(pokemon.lastDamage / 4, pokemon);
+	 },
+	 name: "Vampiric",
+	 rating: 3,
+	 num: 281,
+ },
+ adrenaline: {
+	 onSourceModifyAccuracyPriority: -1,
+	 onSourceModifyAccuracy(accuracy) {
+		 if (typeof accuracy !== 'number') return;
+			 if (pokemon.hp <= pokemon.maxhp / 2) {
+				 return accuracy = true;
+			 }
+	 },
+	 name: "Adrenaline",
+	 rating: 3,
+	 num: 10056,
+ },
+ territorial: {
+	 onBasePowerPriority: 19,
+	 onBasePower(basePower, attacker, defender, move) {
+		 if (this.field.terrain) {
+			 return this.chainModify(1.3);
+		 }
+	 },
+	 name: "Territorial",
+	 rating: 3,
+	 num: 10057,
+ },
+ apparition: {
+	 onSourceModifyAtkPriority: 6,
+	 onSourceModifyAtk(atk, attacker, defender, move) {
+		 if (move.type === 'Dark' || move.type === 'Ghost') {
+			 this.debug('Apparition weaken');
+			 return this.chainModify(0.5);
+		 }
+	 },
+	 onSourceModifySpAPriority: 5,
+	 onSourceModifySpA(atk, attacker, defender, move) {
+		 if (move.type === 'Dark' || move.type === 'Ghost') {
+			 this.debug('Apparition weaken');
+			 return this.chainModify(0.5);
+		 }
+	 },
+	 isBreakable: true,
+	 name: "Apparition",
+	 rating: 4,
+	 num: 10058,
+ },
+ toxicant: {
+	 onModifyAtkPriority: 5,
+	 onModifyAtk(atk, attacker, defender, move) {
+		 if (move.type === 'Poison') {
+			 this.debug('Toxicant boost');
+			 return this.chainModify(1.5);
+		 }
+	 },
+	 onModifySpAPriority: 5,
+	 onModifySpA(atk, attacker, defender, move) {
+		 if (move.type === 'Poison') {
+			 this.debug('Toxicant boost');
+			 return this.chainModify(1.5);
+		 }
+	 },
+	 name: "Toxicant",
+	 rating: 3.5,
+	 num: 10059,
+ },
+ feareater: {
+	 onSwitchOut(target) {
+		 pokemon.heal(pokemon.baseMaxhp / 3);
+	 },
+	 name: "Fear Eater",
+	 rating: 4.5,
+	 num: 10060,
+ },
+ flareheal: {
+	 onDamagePriority: 1,
+	 onDamage(damage, target, source, effect) {
+		 if (effect.id === 'brn') {
+			 this.heal(target.baseMaxhp / 8);
+			 return false;
+		 }
+	 },
+	 name: "Flare Heal",
+	 rating: 4,
+	 num: 10061,
+ },
+ impervious: {
+	 onSourceModifyDamage(damage, source, target, move) {
+		 if (target.getMoveHitData(move).typeMod > 2) {
+			 this.debug('Impervious neutralize');
+			 return this.chainModify(0.50);
+		 }
+	 },
+	 name: "Impervious",
+	 rating: 3,
+	 num: 10062,
+ },
+ infuriate: {
+		 onDamagingHit(damage, target, source, move) {
+			 if (move.category === 'Physical') {
+				 this.boost({atk: 1}, target, target);
+			 }
+		 },
+		 name: "Infuriate",
+		 rating: 3.5,
+		 num: 10063,
+	 },
+	 relentless: {
+	 onAnyFaint(target, source, effect) {
+		 if (effect && effect.effectType === 'Move') {
+			 source.removeVolatile('mustrecharge');
+		 }
+	 },
+	 name: "Relentless",
+	 rating: 4,
+	 num: 10064,
+ },
+ headache: {
+	 onModifySpAPriority: 5,
+	 onModifySpA(atk, pokemon) {
+		 if (pokemon.volatiles['confusion']) {
+			 return this.chainModify(2);
+		 }
+	 },
+	 name: "Headache",
+	 rating: 2,
+	 num: 10065,
+ },
+ goofy: {
+		 onDamagingHit(damage, target, source, move) {
+			 if (move.flags['contact']) {
+				 if (this.randomChance(3, 10)) {
+					 source.addVolatile('confusion', this.effectData.target);
+				 }
+			 }
+		 },
+		 name: "Goofy",
+		 rating: 2,
+		 num: 10066,
+	 },
+	 celestialbehemoth: {
+		 onModifyAtkPriority: 5,
+		 onModifyAtk(atk, attacker, defender, move) {
+			 if (move.type === 'Cosmic') {
+				 this.debug('Celestial Behemoth boost');
+				 return this.chainModify(1.5);
+			 }
+		 },
+		 onModifySpAPriority: 5,
+		 onModifySpA(atk, attacker, defender, move) {
+			 if (move.type === 'Cosmic') {
+				 this.debug('Celestial Behemoth boost');
+				 return this.chainModify(1.5);
+			 }
+		 },
+		 name: "Celestial Behemoth",
+		 rating: 3.5,
+		 num: 10067,
+	 },
+	 heatharden: {
+		 onDamagingHit(damage, target, source, move) {
+			 if (move.type === 'Water') {
+				 this.boost({spd: 2});
+			 }
+		 },
+		 name: "Heat Harden",
+		 rating: 1.5,
+		 num: 10068,
+	 },
 };

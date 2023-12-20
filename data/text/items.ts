@@ -2425,4 +2425,49 @@ export const ItemsText: {[k: string]: ItemText} = {
 		name: "Vile Vial",
 		desc: "If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power.",
 	},
+	satellitescope: {
+		name: "Satellite Scope",
+		desc: "Holder's Cosmic-type attacks have 1.2x power.",
+	},
+	sacredash: {
+		name: "Sacred Ash",
+		desc: "If holder is Suicune, Entei or Raikou, STAB attacks have 1.3x power.",
+	},
+cosmicgem: {
+name: "Cosmic Gem",
+desc: "Holder's first successful Cosmic-type attack will have 1.3x power. Single use.",
+descGen5: "Holder's first successful Cosmic-type attack will have 1.5x power. Single use.",
+},
+eldurrberry: {
+name: "Eldurr Berry",
+desc: "Halves damage taken from a supereffective Cosmic-type attack. Single use.",
+},
+mysticpropeller: {
+name: "Mystic Propeller",
+desc: "If held by Draconaut, it's Speed is 1.5x.",
+},
+spatialplate: {
+name: "Spatial Plate",
+desc: "Holder's Cosmic-type attacks have 1.2x power. Judgment is Cosmic type.",
+},
+goodnightpillow: {
+		name: "Good-Night Pillow",
+		desc: "Each turn, if holder is asleep, restores 1/10 max HP.",
+},
+bikehelmet: {
+name: "Bike Helmet",
+desc: "Recoil-inducing moves have recoil damage negated.",
+},
+strikevest: {
+name: "Strike Vest",
+desc: "Holder's Def is 1.5x, but it can only select damaging moves.",
+},
+cosmicmemory: {
+name: "Cosmic Memory",
+desc: "Holder's Multi-Attack is Cosmic type.",
+},
+scrapmetal: {
+name: "Scrap Metal",
+desc: "If held by Tinkatack or Tinkaton, its Attack is 1.5x.",
+},
 };

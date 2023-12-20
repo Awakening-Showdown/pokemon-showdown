@@ -976,8 +976,8 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	cometpunch: {
 		name: "Comet Punch",
-		desc: "Hits two to five times. Has a 35% chance to hit two or three times and a 15% chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
-		shortDesc: "Hits 2-5 times in one turn.",
+		desc: "Has a 10% chance to confuse the target.",
+		shortDesc: "10% chance to confuse the target.",
 		gen4: {
 			desc: "Hits two to five times. Has a 3/8 chance to hit two or three times, and a 1/8 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times. If the target has a Focus Sash and had full HP when this move started, it will not be knocked out regardless of the number of hits.",
 		},
@@ -7543,4 +7543,465 @@ export const MovesText: {[k: string]: MoveText} = {
 			shortDesc: "Nearly always goes first. Always crits.",
 		},
 	},
+	spiritsap: {
+name: "Spirit Sap",
+desc: "Raises the user's Special Attack by 3 stages if this move knocks out the target.",
+shortDesc: "Raises user's SpA by 3 if this KOes the target.",
+},
+thinkfast: {
+name: "Think Fast",
+desc: "No additional effect.",
+shortDesc: "Usually goes first.",
+},
+spookytricks: {
+name: "Spooky Tricks",
+desc: "Lowers the target's Defense and Special Defense by 1 stage. If this move is successful, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if the target's Defense and Special Defense stat stages were both unchanged, or if there are no unfainted party members.",
+shortDesc: "Lowers target's Def, Sp. Def by 1. User switches.",
+},
+firejet: {
+name: "Fire Jet",
+desc: "No additional effect.",
+shortDesc: "Usually goes first. Thaws user.",
+},
+coldfront: {
+name: "Cold Front",
+desc: "Has a 10% chance to freeze the target.",
+shortDesc: "10% chance to freeze the foe(s).",
+},
+magmabath: {
+name: "Magma Bath",
+desc: "The user has 1/16 of its maximum HP, rounded down, restored at the end of each turn while it remains active. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. If the user uses Baton Pass, the replacement will receive the healing effect.",
+shortDesc: "User recovers 1/16 max HP per turn.",
+},
+darkmelody: {
+name: "Dark Melody",
+desc: "Has a 10% chance to cause the target to sleep.",
+shortDesc: "10% chance to cause the foe(s) to sleep.",
+},
+diamonddust: {
+name: "Diamond Dust",
+desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
+shortDesc: "100% chance to lower the target's Speed by 1.",
+},
+magicdarts: {
+name: "Magic Darts",
+desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+shortDesc: "Hits 2-5 times in one turn.",
+},
+landslide: {
+name: "Land Slide",
+desc: "If both the user and the target have not fainted, the target is forced to switch out and be replaced with a random unfainted ally. This effect fails if the target used Ingrain previously, has the Suction Cups Ability, or this move hit a substitute.",
+shortDesc: "Forces the target to switch to a random ally.",
+},
+forestsvoice: {
+name: "Forest's Voice",
+desc: "For 5 turns, the terrain becomes Grassy Terrain. During the effect, the power of Grass-type attacks used by grounded Pokemon is multiplied by 1.3, the power of Bulldoze, Earthquake, and Magnitude used against grounded Pokemon is multiplied by 0.5, and grounded Pokemon have 1/16 of their maximum HP, rounded down, restored at the end of each turn, including the last turn. Camouflage transforms the user into a Grass type, Nature Power becomes Energy Ball, and Secret Power has a 30% chance to cause sleep. Fails if the current terrain is Grassy Terrain.",
+shortDesc: "Summons Grassy Terrain.",
+},
+spectralfang: {
+name: "Spectral Fang",
+desc: "Has a 10% chance to lower the target's Speed by 1 stage.",
+shortDesc: "10% chance to lower the target's Speed by 1.",
+},
+phazingphantasm: {
+name: "Phazing Phantasm",
+shortDesc: "No additional effect.",
+},
+nightmaredance: {
+name: "Nightmare Dance",
+desc: "Raises the user's Special Attack and Speed by 1 stage.",
+shortDesc: "Raises the user's Special Attack and Speed by 1.",
+},
+shieldbeam: {
+name: "Shield Beam",
+desc: "Uses user's Sp. Def stat as SpA in damage calculation.",
+shortDesc: "Uses user's SpD stat as SpA in damage calculation.",
+},
+limitbreaker: {
+name: "Limit Breaker",
+desc: "Raises the user's Special Attack by 12 stages in exchange for the user losing 1/2 of its maximum HP, rounded down. Fails if the user would faint or if its Special Attack stat stage is 6.",
+shortDesc: "User loses 50% max HP. Maximizes Special Attack.",
+},
+featherbarrage: {
+name: "Feather Barrage",
+desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+shortDesc: "Hits 2-5 times in one turn.",
+},
+rockseal: {
+name: "Rock Seal",
+desc: "Prevents the target from switching for five turns (seven turns if the user is holding Grip Claw). The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+		shortDesc: "Traps the target for 5 turns.",
+	},
+crushingice: {
+name: "Crushing Ice",
+shortDesc: "Hits adjacent Pokemon.",
+},
+prehistoricwisdom: {
+name: "Prehistoric Wisdom",
+desc: "Raises the user's Attack, Defense and Special Attack by 1 stage.",
+shortDesc: "Raises the user's Attack, Defense and Special Attack by 1.",
+},
+waterbullet: {
+name: "Water Bullet",
+desc: "No additional effect.",
+shortDesc: "Usually goes first.",
+},
+poisonhorn: {
+name: "Poison Horn",
+desc: "Has a 10% chance to poison the target.",
+shortDesc: "10% chance to poison.",
+},
+zapkick: {
+name: "Zap Kick",
+desc: "Has a 10% chance to paralyze the target and a higher chance for a critical hit.",
+shortDesc: "High critical hit ratio. 10% chance to paralyze.",
+},
+magicdust: {
+name: "Magic Dust",
+desc: "Causes the target's Ability to become Levitate. Fails if the target's Ability is As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Levitate, Multitype, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Truant, or Zen Mode.",
+shortDesc: "The target's Ability becomes Levitate.",
+},
+crystalwave: {
+name: "Crystal Wave",
+desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+shortDesc: "Hits 2-5 times in one turn.",
+},
+purifyingflame: {
+name: "Purifying Flame",
+desc: "Resets the stat stages of all active Pokemon to 0.",
+shortDesc: "Eliminates all stat changes.",
+},
+windblast: {
+name: "Wind Blast",
+desc: "Has a 10% chance to flinch the target.",
+shortDesc: "10% chance to flinch the foe(s).",
+},
+speedstrike: {
+name: "Speed Strike",
+desc: "Damage is calculated using the user's Speed stat as its Attack, including stat stage changes. Other effects that modify the Attack stat are used as normal.",
+shortDesc: "Uses user's Spe stat as Atk in damage calculation.",
+},
+sleepbubble: {
+name: "Sleep Bubble",
+desc: "Causes the target to fall asleep at the end of the next turn. Fails when used if the target cannot fall asleep or if it already has a major status condition. At the end of the next turn, if the target is still active, does not have a major status condition, and can fall asleep, it falls asleep. If the target becomes affected, this effect cannot be prevented by Safeguard or a substitute, or by falling asleep and waking up during the effect.",
+shortDesc: "Puts the target to sleep after 1 turn.",
+},
+psychocrash: {
+name: "Psycho Crash",
+desc: "Has a 10% chance to confuse the target. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+shortDesc: "Has 33% recoil. 10% chance to confuse.",
+},
+cometstorm: {
+name: "Comet Storm",
+desc: "Has a higher chance for a critical hit.",
+shortDesc: "High critical hit ratio.",
+},
+forcefield: {
+name: "Force Field",
+desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon trying to deal Special damage with the user have their Special Defense lowered by 2 stages. Non-damaging moves go through this protection. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+shortDesc: "Protects from damaging attacks. Special; -2 Sp.Def.",
+},
+cometarray: {
+name: "Comet Array",
+desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Skill Link Ability, this move will always hit five times.",
+shortDesc: "Hits 2-5 times in one turn.",
+},
+moonritual: {
+name: "Moon Ritual",
+desc: "+1 Atk, Def, Sp. Def. User; -25% HP.",
+shortDesc: "+1 Atk, Def, Sp. Def. User; -25% HP.",
+},
+implosion: {
+name: "Implosion",
+desc: "If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+shortDesc: "Has 33% recoil.",
+},
+draconicfangs: {
+name: "Draconic Fangs",
+shortDesc: "No additional effect.",
+},
+vacuumray: {
+name: "Vacuum Ray",
+shortDesc: "No additional effect.",
+},
+asteroidbelt: {
+name: "Asteroid Belt",
+desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Parting Shot, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+shortDesc: "Traps and damages the target for 4-5 turns.",
+},
+wormhole: {
+name: "Worm Hole",
+desc: "The target is forced to switch out and be replaced with a random unfainted ally. Fails if the target is the last unfainted Pokemon in its party, or if the target used Ingrain previously or has the Suction Cups Ability.",
+shortDesc: "Forces the target to switch to a random ally.",
+},
+voidrend: {
+name: "Void Rend",
+desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. Bite move.",
+shortDesc: "User recovers 50% of the damage dealt.",
+},
+gammaray: {
+name: "Gamma Ray",
+desc: "Has a 10% chance to poison the target. Boosted by Mega Launcher.",
+shortDesc: "10% chance to poison the target.",
+},
+wagondance: {
+name: "Wagon Dance",
+desc: "Raises the user's Attack by 2 stages and Speed by 1 stage. User loses 50kg",
+shortDesc: "Raises the user's Attack by 2 and Speed by 1.",
+},
+tsunami: {
+name: "Tsunami",
+desc: "Lowers the user's Special Attack by 2 stages.",
+shortDesc: "Lowers the user's Sp. Atk by 2.",
+},
+nebulaburst: {
+name: "Nebula Burst",
+desc: "Power is equal to (user's current HP * 150 / user's maximum HP), rounded down, but not less than 1.",
+shortDesc: "Less power as user's HP decreases. Hits foe(s).",
+},
+heartbreak: {
+name: "Heart Break",
+desc: "Power doubles if the target is infatuated.",
+shortDesc: "Power doubles if the target is infatuated.",
+},
+mythicarrows: {
+name: "Mythic Arrows",
+desc: "Has a higher chance for a critical hit and a 20% chance to lower the target's Special Defense.",
+shortDesc: "High crit; Target 20% -1 Special Defense",
+},
+symphonicflare: {
+name: "Symphonic Flare",
+shortDesc: "No additional effect.",
+desc: "No additional effect.",
+},
+ragnarok: {
+name: "Ragnarok",
+desc: "Uses user's first type. Applies Perish Song.",
+shortDesc: "Uses user's first type. Applies Perish Song.",
+},
+tribaltoxins: {
+name: "Tribal Toxins",
+desc: "This move lowers the target's Def. if the user's Attack is greater than its Special Attack, or lowers the target's SpDef. if the user's Special Attack is greater than its Attack, including stat stage changes. Applies poison.",
+shortDesc: "Poison target; if user Atk>SpA lower Def. Vice versa.",
+},
+calcitecrash: {
+name: "Calcite Crash",
+desc: "Has a 10% chance to burn the target. If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+shortDesc: "Has 33% recoil. 10% chance to burn. Thaws user.",
+},
+mudbrickcannon: {
+name: "Mudbrick Cannon",
+desc: "Has a 20% chance to confuse the target.",
+shortDesc: "20% chance to confuse the target.",
+},
+regrowth: {
+name: "Regrowth",
+desc: "The user restores 1/4 of its maximum HP. Raises the user's Special Attack by 1 stage.",
+shortDesc: "Heals the user by 25% of its HP; Raise Sp. Atk by 1.",
+},
+nosedive: {
+name: "Nosedive",
+desc: "If this attack is not successful, the user loses quarter of its maximum HP, rounded down, as crash damage. Pokemon with the Magic Guard Ability are unaffected by crash damage.",
+shortDesc: "User is hurt by 25% of its max HP if it misses.",
+},
+jadeblade: {
+name: "Jade Blade",
+shortDesc: "No Additional Effect.",
+},
+windscythe: {
+name: "Wind Scythe",
+desc: "Has a higher chance for a critical hit.",
+shortDesc: "High critical hit ratio.",
+},
+dunewave: {
+name: "Dune Wave",
+desc: "Has a 10% chance to start a Sandstorm.",
+shortDesc: "10% chance to start a Sandstorm.",
+},
+aquaticgift: {
+name: "Aquatic Gift",
+desc: "If this move is successful and the user has not fainted, the user switches out and sets Aqua Ring on the switching-in Pokémon, even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members, or if the target switched out using an Eject Button or through the effect of the Emergency Exit or Wimp Out Abilities.",
+shortDesc: "User Switches; Passes an Aqua Ring",
+},
+astroshift: {
+name: "Astro Shift",
+desc: "Raises the user's speed by two stages and the user's special attack by one stage.",
+shortDesc: "Raises the user's Spe by 2 and raises SpA by 1.",
+},
+animablast: {
+name: "Anima Blast",
+desc: "20% chance to raise Accuracy by 1 stage.",
+shortDesc: "20% chance to raise Accuracy by 1 stage.",
+},
+jetstream: {
+name: "Jet Stream",
+desc: "No additional effect",
+shortDesc: "Usually goes first",
+},
+treasurehoard: {
+name: "Treasure Hoard",
+desc: "If the user has no item, it picks up the last used item in a battle.",
+shortDesc: "If the user has no item, it picks up the last used item in a battle.",
+},
+mercurywave: {
+name: "Mercury Wave",
+desc: "20% chance to poison target.",
+shortDesc: "20% chance to poison target.",
+},
+collisionburst: {
+name: "Collision Burst",
+desc: "Hits adjacent Pokemon. 10% chance to flinch",
+shortDesc: "Hits adjacent Pokemon. 10% chance to flinch",
+},
+twintrunkwallop: {
+name: "Twin Trink Wallop",
+desc: "Hits twice. If the first hit breaks the target's substitute, it will take damage for the second hit. Has a 30% chance to heal 1/10th HP of user.",
+shortDesc: "Hits twice. 30% chance to heal 1/10th HP of user.",
+},
+astralprojections: {
+name: "Astral Projections",
+desc: "Power is equal to 100+(X*20), where X is the target's total stat stage changes that are greater than 0, but not more than 200 power.",
+shortDesc: "100 power +20 for each of the target's stat boosts.",
+},
+starpierce: {
+name: "Star Pierce",
+desc: "Bypasses Substitute",
+shortDesc: "Bypasses Substitute.",
+},
+falconpunch: {
+name: "Falcon Punch",
+desc: "This move is always a critical hit unless the target is under the effect of Lucky Chant or has the Battle Armor or Shell Armor Abilities.",
+shortDesc: "Always results in a critical hit.",
+},
+gigaspark: {
+name: "Giga Spark",
+desc: "Has a 10% chance to paralyze the target.",
+shortDesc: "10% chance to paralyze the target.",
+},
+bugbash: {
+name: "Bug Bash",
+desc: "If the target lost HP, the user takes recoil damage equal to 33% the HP lost by the target, rounded half up, but not less than 1 HP.",
+shortDesc: "Has 33% recoil.",
+},
+tailflail: {
+name: "Tail Flail",
+desc: "Has a 100% chance to raise the user's Defense by 1.",
+shortDesc: "100% chance to raise the user's Defense by 1.",
+},
+astralshot: {
+name: "Astral Shot",
+desc: "No additional effect",
+shortDesc: "Usually goes first",
+},
+psychicoverload: {
+name: "Psychic Overload",
+desc: "The user spends two or three turns locked into this move and becomes confused immediately after its move on the last turn of the effect if it is not already. This move targets an opposing Pokemon at random on each turn. If the user is prevented from moving, is asleep at the beginning of a turn, or the attack is not successful against the target on the first turn of the effect or the second turn of a three-turn effect, the effect ends without causing confusion. If this move is called by Sleep Talk and the user is asleep, the move is used for one turn and does not confuse the user.",
+shortDesc: "Lasts 2-3 turns. Confuses the user afterwards.",
+},
+roughhouse: {
+name: "Roughhouse",
+desc: "Lowers the user's Attack and Defense by 1 stage.",
+shortDesc: "Lowers the user's Attack and Defense by 1.",
+},
+spatialdrain: {
+name: "Spatial Drain",
+desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+shortDesc: "User recovers 50% of the damage dealt.",
+},
+ringlock: {
+name: "Ringlock",
+desc: "Prevents the target from switching out. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Teleport, U-turn, or Volt Switch. If the target leaves the field using Baton Pass, the replacement will remain trapped. The effect ends if the user leaves the field.",
+shortDesc: "Prevents the target from switching out.",
+},
+licklash: {
+name: "Lick Lash",
+desc: "Has a 30% chance to paralyze the target.",
+shortDesc: "30% chance to paralyze the target.",
+},
+groundhousekick: {
+name: "Groundhouse Kick",
+desc: "Has a 30% chance to start a sandstorm",
+shortDesc: "30% chance to start a sandstorm.",
+},
+venomdropkick: {
+name: "Venom Dropkick",
+desc: "Has a 30% chance to badly poison the target.",
+shortDesc: "30% chance to badly poison the target.",
+},
+honeysplatter: {
+name: "Honey Splatter",
+desc: "Has a 100% chance to lower the target's Speed by 1 stage.",
+shortDesc: "100% chance to lower the target's Speed by 1.",
+},
+aquarenewal: {
+name: "Aqua Renewal",
+desc: "The user restores 1/3 of its maximum HP, rounded half up.",
+shortDesc: "Heals the user by 1/3 of its max HP.",
+},
+psyclone: {
+	name: "Psyclone",
+	desc: "Ends the effects of active weather.",
+	shortDesc: "Ends the effects of active weather.",
+},
+danceoff: {
+name: "Dance Off",
+desc: "Applies Torment on the target.",
+shortDesc: "Applies Torment on the target.",
+},
+bearhug: {
+	name: "Bear Hug",
+	desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+	shortDesc: "Traps and damages the target for 4-5 turns.",
+
+	start: "  [SOURCE] trapped [POKEMON]!",
+},
+gigatonaxe: {
+	name: "Gigaton Axe",
+	shortDesc: "Cant be used twice in a row & high critical hit ratio.",
+},
+freighttrain: {
+	name: "Freight Train",
+	desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
+	shortDesc: "User cannot move next turn.",
+},
+bonebash: {
+	name: "Bone Bash",
+	desc: "Has a 50% chance to lower the target's Defense by 2 stages.",
+	shortDesc: "50% chance to lower the target's Defense by 2.",
+},
+voidshredder: {
+	name: "Void Shredder",
+	desc: "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+	shortDesc: "Traps and damages the target for 4-5 turns.",
+
+	start: "  [SOURCE] trapped [POKEMON]!",
+},
+shortcircuit: {
+	name: "Short Circuit",
+	desc: "Causes the target's Ability to be rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is As One, Battle Bond, Comatose, Commander, Disguise, Gulp Missile, Hadron Engine, Ice Face, Multitype, Orichalcum Pulse, Power Construct, Protosynthesis, Quark Drive, RKS System, Schooling, Shields Down, Stance Change, Zen Mode, or Zero to Hero, this move fails, and receiving the effect through Baton Pass ends the effect immediately.",
+	shortDesc: "Nullifies the target's Ability.",
+
+	start: "  [POKEMON]'s Ability was suppressed!",
+},
+bubblingwax: {
+	name: "Bubbling Wax",
+	desc: "Causes the target's Ability to be rendered ineffective as long as it remains active. If the target uses Baton Pass, the replacement will remain under this effect. If the target's Ability is As One, Battle Bond, Comatose, Commander, Disguise, Gulp Missile, Hadron Engine, Ice Face, Multitype, Orichalcum Pulse, Power Construct, Protosynthesis, Quark Drive, RKS System, Schooling, Shields Down, Stance Change, Zen Mode, or Zero to Hero, this move fails, and receiving the effect through Baton Pass ends the effect immediately.",
+	shortDesc: "Nullifies the target's Ability.",
+
+	start: "  [POKEMON]'s Ability was suppressed!",
+},
+engulf: {
+	name: "Engulf",
+	shortDesc: "Clears terrain and hazards on both sides.",
+},
+maliciousmaw: {
+	name: "Malicious Maw",
+	desc: "Power doubles if the target has less than or equal to half of its maximum HP remaining.",
+	shortDesc: "Power doubles if the target's HP is 50% or less.",
+},
+moonblade: {
+	name: "Moon Blade",
+	desc: "Cures user and teammates burn, poison, or paralysis.",
+	shortDesc: "Cures user and teammates burn, poison, or paralysis",
+},
 };

@@ -2241,4 +2241,307 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 
 		activate: "  [POKEMON] extends [MOVE] by 2 turns!",
 	},
+	daunt: {
+		name: "Daunt",
+		desc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opposing Pokemon by 1 stage. Inner Focus, Oblivious, Own Tempo, Scrappy, and Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opponents by 1 stage.",
+	},
+	conflagrant: {
+		name: "Conflagrant",
+		shortDesc: "This Pokemon's contact moves have a 30% chance of burning.",
+	},
+	dynamo: {
+		name: "Dynamo",
+		shortDesc: "This Pokemon's contact moves have a 30% chance of paralyzing.",
+	},
+	undead: {
+		name: "Undead",
+		desc: "This Pokemon is immune to Ghost-type moves and restores 1/4 of its maximum HP, rounded down, when hit by an Ghost-type move.",
+		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Ghost moves; Ghost immunity.",
+	},
+	snowpacking: {
+	name: "Snow Packing",
+	desc: "If Snow is active, this Pokemon's Attack is multiplied by 1.5 and it loses 1/8 of its maximum HP, rounded down, at the end of each turn. If this Pokemon is holding Utility Umbrella, its Special Attack remains the same and it does not lose any HP.",
+	shortDesc: "If Snow is active, this Pokemon's Atk is 1.5x; loses 1/8 max HP per turn.",
+	},
+	steeltoe: {
+	name: "Steel Toe",
+	desc: "This Pokemon's kick-based attacks have their power multiplied by 1.2.",
+	shortDesc: "This Pokemon's kick-based attacks have 1.2x power.",
+	},
+	wisepower: {
+	name: "Wise Power",
+	shortDesc: "This Pokemon's Special Attack is doubled.",
+	},
+	sunbathe: {
+	name: "Sunbathe",
+	desc: "If Sunny Day is active, this Pokemon restores 1/16 of its maximum HP, rounded down, at the end of each turn. If this Pokemon is holding Utility Umbrella, its HP does not get restored.",
+	shortDesc: "If Sunny Day is active, this Pokemon heals 1/16 of its max HP each turn.",
+	},
+	artillery: {
+	name: "Artillery",
+	desc: "This Pokemon's ballistic attacks have their power multiplied by 1.2.",
+	shortDesc: "This Pokemon's ballistic attacks have 1.2x power.",
+	},
+	parasite: {
+			name: "Parasite",
+			shortDesc: "User gains 1.3x HP from draining moves/Aqua Ring/Ingrain/Leech Seed/Strength Sap.",
+	},
+	mythicarcher: {
+			name: "Mythic Archer",
+			shortDesc: "Changes Physical Non-Contact moves to special.",
+	},
+	adept: {
+	name: "Adept",
+	shortDesc: "This Pokemon's super effective hits do 1.2x damage.",
+	},
+	hubris: {
+	name: "Hubris",
+	shortDesc: "This Pokemon's Special Attack is raised by 1 stage if it attacks and KOes another Pokemon.",
+	},
+	strongwinds: {
+	name: "Strong Winds",
+	desc: "This Pokemon's wind-based attacks have 1.2x power.",
+	shortDesc: "This Pokemon's wind-based attacks have 1.2x power.",
+	},
+	supernova: {
+	name: "Supernova",
+	desc: "At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Cosmic attacks.",
+	shortDesc: "At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Cosmic attacks.",
+	},
+	fortitude: {
+	name: "Fortitude",
+	desc: "This Pokemon's Def, Sp. Def are raised by 1 when it reaches 1/2 or less of its max HP.",
+	shortDesc: "This Pokemon's Def, Sp. Def are raised by 1 when it reaches 1/2 or less of its max HP.",
+	},
+	predator: {
+	name: "Predator",
+	shortDesc: "This Pokemon's attacks do 1.25x on lighter weight targets.",
+	},
+	orchestral: {
+	name: "Orchestral",
+	desc: "This Pokemon's sound-based moves have their power multiplied by 1.3. This Pokemon takes halved damage from sound-based moves.",
+	shortDesc: "This Pokemon receives 1/2 damage from sound moves. Its own have 1.3x power.",
+	},
+	hideandseek: {
+	name: "Hide and Seek",
+	desc: "On switch-in, this Pokemon summons a Substitute.",
+	shortDesc: "On switch-in, this Pokemon summons a Substitute.",
+	},
+	radioactive: {
+	name: "Radioactive",
+	desc: "Poison and Cosmic type moves have their power amplified by 1.2x.",
+	shortDesc: "Poison and Cosmic type moves have their power amplified by 1.2x.",
+	},
+	solidfooting: {
+	name: "Solid Footing",
+	desc: "When switching in, the holder is unaffected by hazards on its side of the field.",
+	shortDesc: "When switching in, the holder is unaffected by hazards on its side of the field.",
+	},
+	fishmemory: {
+	name: "Fish Memory",
+	desc: "At the end of the turn, this Pokemon's stat changes dissapear.",
+	shortDesc: "At the end of the turn, this Pokemon's stat changes dissapear.",
+	},
+	herbivore: {
+	name: "Herbivore",
+	desc: "This Pokemon is immune to Grass-type moves and restores 1/4 of its maximum HP, rounded down, when hit by an Grass-type move.",
+	shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Grass moves; Grass immunity.",
+	},
+	blizzardgift: {
+	name: "Blizzard Gift",
+	desc: "If this Pokemon is a Yetitan and Hail is active, it changes to Blizzard Form and the Attack and Special Defense of it and its allies are multiplied by 1.5. If this Pokemon is a Yetitan and it is holding Utility Umbrella, it remains in its regular form and the Attack and Special Defense stats of it and its allies are not boosted. If this Pokemon is a Yetitan in its Blizzard form and is given Utility Umbrella, it will immediately switch back to its regular form. If this Pokemon is a Yetitan holding Utility Umbrella and its item is removed while Hail is active, it will transform into its Blizzard Form. If an ally is holding Utility Umbrella while Yetitan is in its Blizzard Form, they will not receive the Attack and Special Defense boosts.",
+	shortDesc: "If user is Yetitan and Hail is active, it and allies' Attack and Sp. Def are 1.5x.",
+	},
+	phytogenetic: {
+	name: "Phytogenetic",
+	shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Grass-type attack.",
+	},
+	pantheon: {
+	name: "Pantheon",
+	desc: "If an active ally has this Ability, this Pokemon's highest stat is multiplied by 1.5.",
+	shortDesc: "If an active ally has this Ability, this Pokemon's highest stat is 1.5x.",
+	},
+	rushdown: {
+	name: "Rushdown",
+	desc: "This Pokemon attacking stat is multiplied by 1.5 if it is the user's first turn on the field.",
+	shortDesc: "This Pokemon's attacking stat is 1.5x if first turn out.",
+	},
+	vitalitydrain: {
+	name: "Vitality Drain",
+	desc: "This Pokemonis healed 1/4 max hp if it attacks and knocks out another Pokemon.",
+	shortDesc: "This Pokemonis healed 1/4 max hp if it attacks and KOes another Pokemon.",
+	},
+	remorse: {
+	name: "Remorse",
+	desc: "If this Pokemon is knocked out, that move's user Attack and Special Attack are lowered 1 stage.",
+	shortDesc: "If this Pokemon is KOed, that move's user Atk and Sp.Atk are lowered 1 stage.",
+
+	damage: "  [POKEMON] was hurt!",
+	},
+	ignition: {
+	name: "Ignition",
+	desc: "This Pokemon is immune to Fire-type moves and restores 1/4 of its maximum HP, rounded down, when hit by a Fire-type move.",
+	shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Fire moves; Fire immunity.",
+	newmeta: "true",
+	},
+	chainstriker: {
+	name: "Chain Striker",
+	desc: "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.",
+	shortDesc: "Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.",
+	newmeta: "true",
+	},
+	tightgrip: {
+	name: "Tight Grip",
+	desc: "Holder's partial-trapping moves always last 7 turns.",
+	shortDesc: "Holder's partial-trapping moves always last 7 turns.",
+	newmeta: "true",
+	},
+	envious: {
+	name: "Envious",
+	desc: "On switch in, this Pokemons Attack is raised by one stage, but only if the opponent has at least one stat boosted.",
+	shortDesc: "On switch in, this Pokemons Attack is raised 1 stage if the opponent has at least one stat boosted.",
+	},
+	hydrothermal: {
+	name: "Hydrothermal",
+	desc: "The power of the Pokémon's Water-type moves are boosted in sunshine instead of being weakened (x1.1 boost).",
+	shortDesc: "Water-type moves are boosted x1.1 in sunshine instead of being weakened.",
+	},
+	camper: {
+	name: "Camper",
+	desc: "This Pokémon recovers 15% of health and cures status when using two turns charge moves.",
+	shortDesc: "This Pokémon recovers 15% of health and cures status when using two turns charge moves.",
+	},
+	razorrotors: {
+	name: "Razor Rotors",
+	shortDesc: "This Pokemon's attacking stat is multiplied by 1.5 while using a Flying-type attack.",
+	},
+	gordianknot: {
+	name: "Gordian Knot",
+	desc: "This Pokemon traps for one turn foes which hit it with a contact move.",
+	shortDesc: "This Pokemon traps for one turn foes which hit it with a contact move.",
+	},
+	rooted: {
+	name: "Rooted",
+	desc: "This Pokemon Ingrains itself on switch-in, trapping itself.",
+	shortDesc: "This Pokemon uses Ingrain on switch-in.",
+	},
+	energetic: {
+	name: "Energetic",
+	desc: "The power of this Pokemon's priority moves is multiplied by 1.5.",
+	shortDesc: "This Pokemon's priority moves have 1.5x power.",
+	},
+	clumsy: {
+	name: "Clumsy",
+	shortDesc: "If this Pokemon is confused, its Attack is 1.5x.",
+	},
+	mistweaver: {
+	name: "Mist Weaver",
+	shortDesc: "If Misty Terrain is active, this Pokemon's Fairy-type moves have their power multiplied by 1.5..",
+	},
+	shorttemper: {
+	name: "Short Temper",
+	shortDesc: "This Pokemon's Atk is raised by 1 when it reaches 1/2 or less of its max HP.",
+	},
+	breakneck: {
+	name: "Breakneck",
+	shortDesc: "This Pokemon's moves of 60 power or less have have their priority increased by 1.",
+	},
+	seer: {
+	name: "Seer",
+	desc: "This Pokemon can hit Dark types with Psychic-type moves.",
+	shortDesc: "Psychic moves hit Dark.",
+	},
+	resilience: {
+	name: "Resilience",
+	shortDesc: "This Pokemon's Sp. Def is raised by 1 stage after it is damaged by a special move.",
+	},
+	amplifier: {
+	name: "Amplifier",
+	shortDesc: "This Pokemon's Sound-based moves are boosted by 1.2x.",
+	},
+	vampiric: {
+	name: "Vampiric",
+	desc: "Allows the user to regain 25% of the damage inflicted when using a contact move. That amount of HP recovered is unaffected by Big Root. If the effects of Heal Block are active then Vampiric cannot restore HP.",
+	shortDesc: "The user gains 25% of the damage inflicted when using a contact move.",
+	},
+	adrenaline: {
+	name: "Adrenaline",
+	shortDesc: "This Pokemon's damaging attacks never miss when at 1/2 or less of its max HP.",
+	},
+	territorial: {
+	name: "Territorial",
+	shortDesc: "If Terrain is active, this Pokemon's attacks do 1.3x damage.",
+	},
+	apparition: {
+	name: "Apparition",
+	desc: "If a Pokemon uses a Dark- or Ghost-type attack against this Pokemon, that Pokemon's offensive stat is halved when calculating the damage to this Pokemon.",
+	shortDesc: "Dark-/Ghost-type moves against this Pokemon deal damage with a halved offensive stat.",
+	},
+	toxicant: {
+	name: "Toxicant",
+	shortDesc: "This Pokemon's offensive stat is multiplied by 1.5 while using a Poison-type attack.",
+	},
+	feareater: {
+	name: "Fear Eater",
+	shortDesc: "User restores 1/3 of its maximum HP, rounded down, when the opponent switches out.",
+	},
+	impervious: {
+	name: "Impervious",
+	shortDesc: "This Pokemon receives 1/2 damage from 4x effective attacks.",
+	},
+	flareheal: {
+	name: "Flare Heal",
+	shortDesc: "This Pokemon is healed by 1/8 of its max HP each turn when burned; no HP loss. Ignores burn Attack reduction.",
+	},
+	infuriate: {
+	name: "Infuriate",
+	desc: "If a physical attack hits this Pokemon, its Attack is raised by 1 stage.",
+	shortDesc: "If a physical attack hits this Pokemon, its Attack is raised by 1 stage.",
+	},
+	relentless: {
+	name: "Relentless",
+	shortDesc: "If this Pokemon KOs a target with a recharge move, it does not need to recharge.",
+	},
+	headache: {
+	name: "Headache",
+	shortDesc: "If this Pokemon is confused, its Sp. Atk is doubled.",
+	},
+	goofy: {
+	name: "Goofy",
+	shortDesc: "30% chance a Pokemon making contact with this Pokemon will be confused.",
+	},
+	jeweler: {
+	name: "Jeweler",
+	shortDesc: "This Pokemon's Gems are reusable.",
+	},
+	cauterize: {
+	name: "Cauterize",
+	shortDesc: "When the user is put at 1/2 HP or less, it gains the Magma Bath Effect until switch out.",
+	},
+	cosmersion: {
+	name: "Cosmersion",
+	desc: "This Pokemon is immune to Cosmic-type moves and restores 1/4 of its maximum HP, rounded down, when hit by an Cosmic-type move.",
+	shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Cosmic moves; Cosmic immunity.",
+	},
+	celestialbehemoth: {
+	name: "Celestial Behemoth",
+	shortDesc: "This Pokemon's offensive stat is multiplied by 1.5 while using a Cosmic-type attack.",
+	},
+	channeling: {
+	name: "Channeling",
+	shortDesc: "This Pokemon's Electric moves recover 1/6th of their max HP.",
+	},
+	harsh: {
+	name: "Harsh",
+	shortDesc: "This Pokemon's attacks are critical hits if the target is burned.",
+	},
+	spikedskin: {
+	name: "Spiked Skin",
+	shortDesc: "If this Pokemon is hit by a contact attack, Spikes are set on the opposing side.",
+	},
+	heatharden: {
+	name: "Heat Harden",
+	shortDesc: "This Pokemon's Defense is raised 2 stages after it is damaged by a Water-type move.",
+	},
 };
