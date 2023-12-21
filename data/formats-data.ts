@@ -5712,7 +5712,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	pokestarufopropu2: {
 		isNonstandard: "Custom",
 		tier: "Illegal",
-	}
+	},
 	salamoot: {
 		tier: "Uber",
 		natDexTier: "Uber",
