@@ -22711,4 +22711,15 @@ vampayar: {
 	evoLevel: 30,
 	eggGroups: ["Water 2"],
 },
+wyrmonarch: {
+	num: 102318,
+	name: "Wyrmonarch",
+	types: ["Bug", "Dragon"],
+	baseStats: {hp: 96, atk: 143, def: 128, spa: 50, spd: 78, spe: 45},
+	abilities: {0: "Battle Armor", 1: "Stamina", H: "Compound Eyes", S: "Envious"},
+	heightm: 1.4,
+	weightkg: 124,
+	color: "Purple",
+	eggGroups: ["Bug", "Dragon"],
+},
 };

@@ -6513,4 +6513,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	vampayar: {
 		tier: "RU",
 	},
+	wyrmonarch: {
+		tier: "RU",
+	},
 };
