@@ -329,6 +329,10 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	battlearmor: {
 		onCriticalHit: false,
+		onModifySecondaries(secondaries) {
+			this.debug('Armor Armor prevent secondary');
+			return secondaries.filter(effect => !!(effect.self || effect.dustproof));
+		},
 		isBreakable: true,
 		name: "Battle Armor",
 		rating: 1,
@@ -3980,12 +3984,17 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	shellarmor: {
 		onCriticalHit: false,
+		onModifySecondaries(secondaries) {
+			this.debug('Shell Armor prevent secondary');
+			return secondaries.filter(effect => !!(effect.self || effect.dustproof));
+		},
 		isBreakable: true,
 		name: "Shell Armor",
 		rating: 1,
 		num: 75,
 	},
 	shielddust: {
+		onCriticalHit: false,
 		onModifySecondaries(secondaries) {
 			this.debug('Shield Dust prevent secondary');
 			return secondaries.filter(effect => !!(effect.self || effect.dustproof));
@@ -6340,4 +6349,18 @@ honeyboost: {
 		 rating: 1.5,
 		 num: 10068,
 	 },
+	 wintercoat: {
+ 		onTryHit(target, source, move) {
+ 			if (target !== source && move.type === 'Ice') {
+ 				if (!this.boost({def: 1})) {
+ 					this.add('-immune', target, '[from] ability: Winter Coat');
+ 				}
+ 				return null;
+ 			}
+ 		},
+ 		isBreakable: true,
+ 		name: "Winter Coat",
+ 		rating: 3.5,
+ 		num: 10069,
+ 	},
 };

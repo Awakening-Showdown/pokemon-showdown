@@ -144,7 +144,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	battlearmor: {
 		name: "Battle Armor",
-		shortDesc: "This Pokemon cannot be struck by a critical hit.",
+		shortDesc: "Cannot be crit; Not affected by the secondary effect of another Pokemon's attack.",
 	},
 	battlebond: {
 		name: "Battle Bond",
@@ -1614,11 +1614,11 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	},
 	shellarmor: {
 		name: "Shell Armor",
-		shortDesc: "This Pokemon cannot be struck by a critical hit.",
+		shortDesc: "Cannot be crit; Not affected by the secondary effect of another Pokemon's attack.",
 	},
 	shielddust: {
 		name: "Shield Dust",
-		shortDesc: "This Pokemon is not affected by the secondary effect of another Pokemon's attack.",
+		shortDesc: "Cannot be crit; Not affected by the secondary effect of another Pokemon's attack.",
 	},
 	shieldsdown: {
 		name: "Shields Down",
@@ -2400,7 +2400,7 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	envious: {
 	name: "Envious",
 	desc: "On switch in, this Pokemons Attack is raised by one stage, but only if the opponent has at least one stat boosted.",
-	shortDesc: "On switch in, this Pokemons Attack is raised 1 stage if the opponent has at least one stat boosted.",
+	shortDesc: "On switch in, user's Attack is raised 1 by stage if the opponent has stat boosts.",
 	},
 	hydrothermal: {
 	name: "Hydrothermal",
@@ -2543,5 +2543,9 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 	heatharden: {
 	name: "Heat Harden",
 	shortDesc: "This Pokemon's Defense is raised 2 stages after it is damaged by a Water-type move.",
+	},
+	wintercoat: {
+	name: "Winter Coat",
+	shortDesc: "This Pokemon is immune to Ice-type moves, increases Defense instead.",
 	},
 };

@@ -1094,7 +1094,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		natDexTier: "OU",
 	},
 	zapdosgalar: {
-		tier: "UUBL",
+		tier: "UU",
 		doublesTier: "DOU",
 		natDexTier: "UU",
 	},
@@ -6515,5 +6515,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	wyrmonarch: {
 		tier: "RU",
+	},
+	seradiant: {
+		tier: "NU",
 	},
 };
