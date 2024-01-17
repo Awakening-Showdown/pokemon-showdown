@@ -5335,7 +5335,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		natDexTier: "Uber",
 	},
 	pecharunt: {
-		tier: "UUBL",
+		tier: "UU",
 	},
 	missingno: {
 		isNonstandard: "Custom",
