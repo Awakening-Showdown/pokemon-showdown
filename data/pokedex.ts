@@ -22733,4 +22733,15 @@ seradiant: {
 	color: "Green",
 	eggGroups: ["Human-Like", "Grass"],
 },
+grinnace: {
+	num: 102319,
+	name: "Grinnace",
+	types: ["Dark", "Fairy"],
+	baseStats: {hp: 99, atk: 87, def: 107, spa: 97, spd: 133, spe: 77},
+	abilities: {0: "Goofy"},
+	heightm: 1,
+	weightkg: 75,
+	color: "Purple",
+	eggGroups: ["Undiscovered"],
+},
 };

@@ -6519,4 +6519,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	seradiant: {
 		tier: "NU",
 	},
+	grinnace: {
+		tier: "NU",
+	},
 };
