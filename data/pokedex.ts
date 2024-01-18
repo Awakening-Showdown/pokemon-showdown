@@ -7050,9 +7050,9 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	deoxysspeed: {
 		num: 386,
 		name: "Deoxys-Speed",
-		baseSpecies: "Deoxys", "Cosmic",
+		baseSpecies: "Deoxys",
 		forme: "Speed",
-		types: ["Psychic"],
+		types: ["Psychic", "Cosmic"],
 		gender: "N",
 		baseStats: {hp: 50, atk: 95, def: 90, spa: 95, spd: 90, spe: 180},
 		abilities: {0: "Pressure"},
